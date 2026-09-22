@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Comboox - Login</title>
+
+    <link rel="icon" type="image/png" href="src/icons/main_logo.png">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background-color: #E3A852;
+            font-family: Arial, sans-serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            width: 420px;
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.20);
+        }
+
+        .login-container h1 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #333333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333333;
+        }
+
+        .form-group input {
+            width: 100%;
+            height: 45px;
+            padding: 10px;
+            font-size: 17px;
+            border: 1px solid #999999;
+            border-radius: 5px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border: 2px solid #C58A25;
+        }
+
+        .forgot-password {
+            display: block;
+            text-align: right;
+            margin-top: -10px;
+            margin-bottom: 20px;
+            color: #333333;
+            font-size: 15px;
+        }
+
+        .login-button {
+            width: 100%;
+            height: 45px;
+            background-color: #E3A852;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .login-button:hover {
+            background-color: #D2953C;
+        }
+
+        .separator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 25px 0;
+        }
+
+        .separator hr {
+            flex: 1;
+            border: none;
+            border-top: 1px solid #aaaaaa;
+        }
+
+        .separator span {
+            font-size: 16px;
+            color: #555555;
+        }
+
+        .social-button {
+            width: 100%;
+            height: 43px;
+            margin-bottom: 12px;
+            background-color: white;
+            border: 1px solid #888888;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .social-button:hover {
+            background-color: #f2f2f2;
+        }
+
+        .register {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .register a {
+            color: #333333;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <h1>Login</h1>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter your email">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password">
+        </div>
+
+        <a href="#" class="forgot-password">
+            I forgot my password
+        </a>
+
+        <button class="login-button">
+            Login
+        </button>
+
+        <div class="separator">
+            <hr>
+            <span>or</span>
+            <hr>
+        </div>
+
+        <button class="social-button">
+            G &nbsp; Login with Google
+        </button>
+
+        <button class="social-button">
+            f &nbsp; Login with Facebook
+        </button>
+
+        <div class="register">
+            Don't have an account?
+            <a href="signup.html">Register</a>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
