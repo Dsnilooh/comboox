@@ -1,25 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>comboox - Home</title>
+    <title>Comboox - Home</title>
 
     <link rel="icon" type="image/png" href="src/icons/main_logo.png">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background-color: #E3A852;
+            font-family: Arial, sans-serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .home-container {
+            text-align: center;
+            background-color: white;
+            padding: 50px;
+            border-radius: 15px;
+            width: 500px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.20);
+        }
+
+        .home-container h1 {
+            font-size: 38px;
+            margin-bottom: 15px;
+            color: #333333;
+        }
+
+        .home-container p {
+            font-size: 20px;
+            color: #555555;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333333;
+            background-color: #E3A852;
+            transition: 0.2s;
+        }
+
+        .button:hover {
+            background-color: #D2953C;
+        }
+
+        .forgot-button {
+            background-color: #F2F2F2;
+        }
+
+        .forgot-button:hover {
+            background-color: #DDDDDD;
+        }
+    </style>
 </head>
 
-<body bgcolor="#E3A852">
+<body>
 
-    <a href="src/signup.html" target="_blank">Sign up</a>
+    <div class="home-container">
 
-    <a href="src/signin.html" target="_blank">Sign in</a>
+        <h1>WELCOME TO COMBOOX</h1>
 
-    <center>WELCOME TO MY LOADING PAGE</center>
+        <p>Welcome to my Comboox page</p>
+
+        <div class="buttons">
+
+            <a href="signup.html" class="button">
+                Sign Up
+            </a>
+
+            <a href="login.html" class="button">
+                Sign In
+            </a>
+
+            <a href="forgot-password.html" class="button forgot-button">
+                Forgot Password
+            </a>
+
+        </div>
+
+    </div>
 
 </body>
 
