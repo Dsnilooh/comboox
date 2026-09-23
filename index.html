@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Comboox - Login</title>
+    <title>Comboox - Welcome</title>
 
     <link rel="icon" type="image/png" href="src/icons/main_logo.png">
 
@@ -25,121 +25,78 @@
             align-items: center;
         }
 
-        .login-container {
-            width: 420px;
+        .welcome-container {
+            width: 690px;
             background-color: white;
-            padding: 40px;
-            border-radius: 12px;
+            padding: 60px;
+            border-radius: 18px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.20);
         }
 
-        .login-container h1 {
+        .welcome-container h1 {
             text-align: center;
-            font-size: 32px;
-            margin-bottom: 30px;
+            font-size: 54px;
+            margin: 0 0 25px 0;
             color: #333333;
         }
 
-        .form-group {
-            margin-bottom: 20px;
+        .welcome-container p {
+            text-align: center;
+            font-size: 27px;
+            color: #3d4f66;
+            margin-bottom: 45px;
         }
 
-        .form-group label {
-            display: block;
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: #333333;
-        }
-
-        .form-group input {
-            width: 100%;
-            height: 45px;
-            padding: 10px;
-            font-size: 17px;
-            border: 1px solid #999999;
-            border-radius: 5px;
-        }
-
-        .forgot-password {
-            display: block;
-            text-align: right;
-            margin-top: -10px;
-            margin-bottom: 25px;
-            color: #333333;
-            text-decoration: none;
-            font-size: 15px;
-        }
-
-        .forgot-password:hover {
-            text-decoration: underline;
-        }
-
-        .login-button {
+        .welcome-button {
             display: block;
             width: 100%;
-            height: 45px;
+            height: 66px;
+            margin-bottom: 18px;
+
             background-color: #E3A852;
-            border: none;
-            border-radius: 5px;
-            font-size: 18px;
+            border-radius: 7px;
+
+            color: #222222;
+            font-size: 24px;
             font-weight: bold;
-            color: #333333;
             text-align: center;
             text-decoration: none;
-            line-height: 45px;
+            line-height: 66px;
         }
 
-        .login-button:hover {
+        .welcome-button:hover {
             background-color: #D2953C;
         }
 
-        .register-text {
-            text-align: center;
-            margin-top: 25px;
-            font-size: 16px;
+        .forgot-button {
+            background-color: #F1F1F1;
         }
 
-        .register-text a {
-            color: #333333;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .register-text a:hover {
-            text-decoration: underline;
+        .forgot-button:hover {
+            background-color: #E0E0E0;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="login-container">
+    <div class="welcome-container">
 
-        <h1>Login</h1>
+        <h1>WELCOME TO<br>COMBOOX</h1>
 
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Enter your email">
-        </div>
+        <p>Welcome to our Comboox page</p>
 
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Enter your password">
-        </div>
-
-        <a href="forgot-password.html" class="forgot-password">
-            I forgot my password
+        <a href="signup.html" class="welcome-button">
+            Sign Up
         </a>
 
-        <a href="home.html" class="login-button">
-            Login
+        <a href="login.html" class="welcome-button">
+            Sign In
         </a>
 
-        <div class="register-text">
-            Don't have an account?
-            <a href="signup.html">Register</a>
-        </div>
+        <a href="forgot-password.html" class="welcome-button forgot-button">
+            Forgot Password
+        </a>
 
     </div>
 
