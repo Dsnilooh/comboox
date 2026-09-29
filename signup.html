@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,24 +50,28 @@
 
 <body>
 
-    <h3>Register new Comboox user</h3>
+    <form name="register-form" action="signup.php" method="POST">
 
-    <label>First Name:</label><br>
-    <input type="text"><br>
+        <h3>Register new Comboox user</h3>
 
-    <label>Last Name:</label><br>
-    <input type="text"><br>
+        <label>First Name:</label><br>
+        <input type="text" name="fname" required><br>
 
-    <label>Mobile Number:</label><br>
-    <input type="number"><br>
+        <label>Last Name:</label><br>
+        <input type="text" name="lname" required><br>
 
-    <label>Email:</label><br>
-    <input type="email"><br>
+        <label>Mobile Number:</label><br>
+        <input type="tel" name="phone" required><br>
 
-    <label>Password:</label><br>
-    <input type="password"><br>
+        <label>Email:</label><br>
+        <input type="email" name="email" required><br>
 
-    <button>Register</button>
+        <label>Password:</label><br>
+        <input type="password" name="psw" required><br>
+
+        <button type="submit">Register</button>
+
+    </form>
 
 </body>
 
