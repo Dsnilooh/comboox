@@ -1,7 +1,7 @@
 <?php
 
 // Get database connection
-require("config/database.php");
+require("../config/database.php");
 
 // Get data from HTML form
 $f_name = $_POST['fname'];
