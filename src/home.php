@@ -1,0 +1,171 @@
+
+<?php
+session_start();
+
+if (!isset($_SESSION['userId'])) {
+    header("Location: login.html");
+    exit();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Comboox - Home</title>
+
+    <link rel="icon" type="image/png" href="icons/main_logo.png">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background-color: #E3A852;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Encabezado */
+        .header {
+            background-color: white;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #E3A852;
+        }
+
+        .account {
+            color: #333;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        /* Contenido principal */
+        .main-content {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .main-content h1 {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        .main-content p {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 45px;
+        }
+
+        /* Opciones */
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .option {
+            width: 220px;
+            min-height: 170px;
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-decoration: none;
+            color: #222;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.20);
+            transition: transform 0.2s;
+        }
+
+        .option:hover {
+            transform: translateY(-5px);
+        }
+
+        .option h2 {
+            margin-bottom: 15px;
+            color: #E3A852;
+        }
+
+        .option p {
+            font-size: 15px;
+            margin: 0;
+        }
+
+        /* Cerrar sesión */
+        .logout {
+            display: inline-block;
+            margin-top: 50px;
+            padding: 12px 25px;
+            background-color: #222;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .logout:hover {
+            background-color: #444;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">COMBOOX</div>
+
+        <a href="#" class="account">
+            <?php echo htmlspecialchars($_SESSION['fname'] . " " . $_SESSION['lname']); ?>
+        </a>
+    </header>
+
+    <main class="main-content">
+
+        <h1>BIENVENIDO A COMBOOX</h1>
+
+        <p>
+            Encuentra y disfruta nuestros combos y productos.
+        </p>
+
+        <section class="options">
+
+            <a href="#" class="option">
+                <h2>Combos</h2>
+                <p>Consulta los combos disponibles.</p>
+            </a>
+
+            <a href="#" class="option">
+                <h2>Productos</h2>
+                <p>Consulta nuestros productos.</p>
+            </a>
+
+            <a href="#" class="option">
+                <h2>Pedidos</h2>
+                <p>Consulta tus pedidos.</p>
+            </a>
+
+        </section>
+
+       <a href="../logout.php" class="logout">
+    Cerrar sesión
+</a>
+    </main>
+
+</body>
+</html>
+
+//TAREA TODO ENSAMBLADO VERIFICACION EN COMBOX 2 LOGIN EL INICIO DE SESION Y NO A REPETICION DE CONTRASEÑA 
+//NO REPERTIR CON TOODO

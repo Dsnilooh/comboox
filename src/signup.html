@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Comboox</title>
+
+    <link rel="icon" type="image/png" href="icons/main_logo.png">
+
+    <style>
+        body {
+            background-color: #E3A852;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 300px;
+            height: 40px;
+            font-size: 18px;
+            padding: 5px 10px;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 180px;
+            height: 45px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h3>Register new Comboox user</h3>
+
+    <form action="signup.php" method="POST">
+
+        <label>First Name:</label><br>
+        <input type="text" name="fname" required><br>
+
+        <label>Last Name:</label><br>
+        <input type="text" name="lname" required><br>
+
+        <label>Mobile Number:</label><br>
+        <input type="number" name="mphone" required><br>
+
+        <label>Email:</label><br>
+        <input type="email" name="email" required><br>
+
+        <label>Password:</label><br>
+        <input type="password" name="psw" required><br>
+
+        <button type="submit">Register</button>
+
+    </form>
+
+</body>
+
+</html>
