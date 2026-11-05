@@ -1,3 +1,13 @@
+
+<?php
+session_start();
+
+if (!isset($_SESSION['userId'])) {
+    header("Location: login.html");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -117,7 +127,9 @@
     <header class="header">
         <div class="logo">COMBOOX</div>
 
-        <a href="#" class="account">Mi cuenta</a>
+        <a href="#" class="account">
+            <?php echo htmlspecialchars($_SESSION['fname'] . " " . $_SESSION['lname']); ?>
+        </a>
     </header>
 
     <main class="main-content">
@@ -147,11 +159,13 @@
 
         </section>
 
-        <a href="login.html" class="logout">
-            Cerrar sesión
-        </a>
-
+       <a href="../logout.php" class="logout">
+    Cerrar sesión
+</a>
     </main>
 
 </body>
 </html>
+
+//TAREA TODO ENSAMBLADO VERIFICACION EN COMBOX 2 LOGIN EL INICIO DE SESION Y NO A REPETICION DE CONTRASEÑA 
+//NO REPERTIR CON TOODO

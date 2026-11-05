@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -153,23 +154,29 @@
 
         <h1>Login</h1>
 
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Enter your email">
-        </div>
+        <form name="login-form" action="login.php" method="POST">
 
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Enter your password">
-        </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email"
+                    placeholder="Enter your email" required>
+            </div>
 
-        <a href="forgot-password.html" class="forgot-password">
-            I forgot my password
-        </a>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="psw"
+                    placeholder="Enter your password" required>
+            </div>
 
-        <a href="home.html" class="login-button">
-            Login
-        </a>
+            <a href="forgot-password.html" class="forgot-password">
+                I forgot my password
+            </a>
+
+            <button type="submit" class="login-button">
+                Login
+            </button>
+
+        </form>
 
         <div class="separator">
             <hr>
