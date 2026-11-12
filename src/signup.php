@@ -14,6 +14,8 @@ $p_assword = $_POST['psw'];
 // Encrypt password
 $pass_enc = md5($p_assword);
 
+$photo = 'photos/user_default.png';
+
 // SQL TO VALIDATION IF USER ALREADY EXISTS
 $sql_validation = "
     SELECT
