@@ -4,6 +4,7 @@ require("../config/database.php");
 
 $sql = "
     SELECT
+        id,
         firstname,
         lastname,
         mobile_phone,
@@ -14,16 +15,16 @@ $sql = "
         END AS user_status,
         photo_url
     FROM
-        users
+        public.users
     ORDER BY
         lastname ASC
 ";
 
 // RESULTADO DE ESA CONSULTA
-$res = pg_query($local_conn, $sql);
+$res = pg_query($supa_conn, $sql);
 
 if (!$res) {
-    die("Error en la consulta: " . pg_last_error($local_conn));
+    die("Error en la consulta: " . pg_last_error($supa_conn));
 }
 ?>
 
@@ -52,27 +53,48 @@ if (!$res) {
         </tr>
 
         <?php
-while ($row = pg_fetch_assoc($res)) {
+        while ($row = pg_fetch_assoc($res)) {
 
-    echo "<tr>";
+            echo "<tr>";
 
-    echo "<td>" . htmlspecialchars($row['firstname']) . "</td>";
-    echo "<td>" . htmlspecialchars($row['lastname']) . "</td>";
-    echo "<td>" . htmlspecialchars($row['mobile_phone']) . "</td>";
-    echo "<td>" . htmlspecialchars($row['email']) . "</td>";
-    echo "<td>" . htmlspecialchars($row['user_status']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['firstname']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['lastname']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['mobile_phone']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['email']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['user_status']) . "</td>";
 
-    if (!empty($row['photo_url'])) {
-        echo "<td><img src='../src/" . htmlspecialchars($row['photo_url']) . "' width='60' height='60' alt='User photo'></td>";
-   
-      
-}
-    echo "<td>
-        <img src ='icons/search.png' width= '20' height='20'>&nbsp;
-        <img src ='icons/edit.png' width= '20' height='20'>&nbsp;
-        <img src ='icons/delete.png' width= '20'>
-        </td>
-        ";
-        echo "</tr>";
-    }
-?>
+            // FOTO DEL USUARIO
+            echo "<td>";
+
+            $foto = trim($row['photo_url'] ?? '');
+
+            if (empty($foto)) {
+                $foto = 'photos/user_default.png';
+            }
+
+            $foto = ltrim($foto, '/');
+
+            echo "<img src='" . htmlspecialchars($foto) . "' width='60' height='60' alt='User photo'>";
+
+            echo "</td>";
+
+            // ICONOS DE ACCIONES
+            echo "<td>";
+
+            echo "<img src='icons/search.png' width='20' height='20' alt='Search'>&nbsp;";
+
+            echo "<a href='edit_user.php?id=" . urlencode($row['id']) . "'>";
+            echo "<img src='icons/edit.png' width='20' height='20' alt='Edit'>";
+            echo "</a>&nbsp;";
+
+            echo "<img src='icons/delete.png' width='20' height='20' alt='Delete'>";
+
+            echo "</td>";
+
+            echo "</tr>";
+        }
+        ?>
+    </table>
+
+</body>
+</html>
