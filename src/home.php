@@ -6,6 +6,11 @@ if (!isset($_SESSION['userId'])) {
     header("Location: login.html");
     exit();
 }
+
+// FOTO DEL USUARIO
+$userPhoto = !empty($_SESSION['photo_url'])
+    ? $_SESSION['photo_url']
+    : 'photos/user_default.png';
 ?>
 
 <!DOCTYPE html>
@@ -51,6 +56,18 @@ if (!isset($_SESSION['userId'])) {
             color: #333;
             font-size: 16px;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Fotografía del usuario */
+        .account-photo {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #E3A852;
         }
 
         /* Contenido principal */
@@ -125,11 +142,24 @@ if (!isset($_SESSION['userId'])) {
 <body>
 
     <header class="header">
+
         <div class="logo">COMBOOX</div>
 
         <a href="#" class="account">
-            <?php echo htmlspecialchars($_SESSION['fname'] . " " . $_SESSION['lname']); ?>
+
+            <img
+                src="<?php echo htmlspecialchars($userPhoto, ENT_QUOTES, 'UTF-8'); ?>"
+                class="account-photo"
+                alt="Foto de perfil"
+                onerror="this.onerror=null;this.src='photos/user_default.png';"
+            >
+
+            <span>
+                <?php echo htmlspecialchars($_SESSION['fname'] . " " . $_SESSION['lname']); ?>
+            </span>
+
         </a>
+
     </header>
 
     <main class="main-content">
@@ -159,13 +189,11 @@ if (!isset($_SESSION['userId'])) {
 
         </section>
 
-       <a href="../logout.php" class="logout">
-    Cerrar sesión
-</a>
+        <a href="../logout.php" class="logout">
+            Cerrar sesión
+        </a>
+
     </main>
 
 </body>
 </html>
-
-//TAREA TODO ENSAMBLADO VERIFICACION EN COMBOX 2 LOGIN EL INICIO DE SESION Y NO A REPETICION DE CONTRASEÑA 
-//NO REPERTIR CON TOODO
