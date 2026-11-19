@@ -14,7 +14,7 @@ $supa_user ="postgres.jrtlsodizgilnnlutbtz";
 $supa_dbname="postgres";
 $supa_password="unicesmag@@";
 
-// LOCAL CONNECTION
+/* LOCAL CONNECTION
 $local_conn = pg_connect("
     host=$local_host
     port=$local_port
@@ -28,7 +28,7 @@ if (!$local_conn){
 }else{
     echo ("<br> Local Connection success !!!");
 }
-
+*/
 // SUPABASE CONNECTION
 $supa_conn = pg_connect("
     host=$supa_host

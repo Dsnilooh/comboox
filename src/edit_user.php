@@ -35,9 +35,19 @@ if (!$user) {
     die("Usuario no encontrado");
 }
 
-$photoUrl = !empty($user['photo_url'])
-    ? $user['photo_url']
-    : 'photos/user_default.png';
+$storedPhoto = trim($user['photo_url'] ?? '');
+
+$photoFile = $storedPhoto !== ''
+    ? basename(str_replace('\\', '/', $storedPhoto))
+    : 'user_default.png';
+
+$localPhotoPath = __DIR__ . '/photos/' . $photoFile;
+
+if ($photoFile === '' || !is_file($localPhotoPath)) {
+    $photoFile = 'user_default.png';
+}
+
+$photoUrl = 'photos/' . $photoFile;
 ?>
 
 <!DOCTYPE html>

@@ -8,9 +8,19 @@ if (!isset($_SESSION['userId'])) {
 }
 
 // FOTO DEL USUARIO
-$userPhoto = !empty($_SESSION['photo_url'])
-    ? $_SESSION['photo_url']
-    : 'photos/user_default.png';
+$storedPhoto = trim($_SESSION['photo_url'] ?? '');
+
+$photoFile = $storedPhoto !== ''
+    ? basename(str_replace('\\', '/', $storedPhoto))
+    : 'user_default.png';
+
+$localPhotoPath = __DIR__ . '/photos/' . $photoFile;
+
+if ($photoFile === '' || !is_file($localPhotoPath)) {
+    $photoFile = 'user_default.png';
+}
+
+$userPhoto = 'photos/' . $photoFile;
 ?>
 
 <!DOCTYPE html>

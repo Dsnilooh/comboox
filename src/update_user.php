@@ -17,8 +17,19 @@ $lastname = trim($_POST['lastname'] ?? '');
 $email = trim($_POST['email'] ?? '');
 $mobile_phone = trim($_POST['mobile_phone'] ?? '');
 
-if ($id === '' || $firstname === '' || $lastname === '' || $email === '') {
-    die("Faltan datos obligatorios");
+if (
+    !ctype_digit($id) ||
+    $firstname === '' ||
+    $lastname === '' ||
+    $email === '' ||
+    $mobile_phone === ''
+) {
+    die("Faltan datos obligatorios o el ID no es válido");
+}
+
+// VALIDAR FORMATO DEL CORREO
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    die("El correo electrónico no es válido");
 }
 
 // VERIFICAR QUE EL CELULAR NO PERTENEZCA A OTRO USUARIO
@@ -48,8 +59,39 @@ if (pg_num_rows($check) > 0) {
     exit;
 }
 
+// VERIFICAR QUE EL CORREO NO PERTENEZCA A OTRO USUARIO
+$sql_email = "
+    SELECT id
+    FROM public.users
+    WHERE LOWER(email) = LOWER($1)
+    AND id <> $2
+    LIMIT 1
+";
+
+$email_check = pg_query_params(
+    $supa_conn,
+    $sql_email,
+    [$email, $id]
+);
+
+if (!$email_check) {
+    die("Error al verificar correo: " . pg_last_error($supa_conn));
+}
+
+if (pg_num_rows($email_check) > 0) {
+    echo "<script>
+        alert('Este correo electrónico ya está registrado por otro usuario.');
+        window.history.back();
+    </script>";
+    exit;
+}
+
 // CONSULTAR USUARIO Y FOTO ACTUAL
-$sql = "SELECT photo_url FROM public.users WHERE id = $1";
+$sql = "
+    SELECT photo_url
+    FROM public.users
+    WHERE id = $1
+";
 
 $result = pg_query_params($supa_conn, $sql, [$id]);
 
@@ -66,7 +108,10 @@ if (!$user) {
 $photo_url = $user['photo_url'] ?? '';
 
 // SUBIR FOTOGRAFIA NUEVA
-if (isset($_FILES['photo']) && $_FILES['photo']['error'] !== UPLOAD_ERR_NO_FILE) {
+if (
+    isset($_FILES['photo']) &&
+    $_FILES['photo']['error'] !== UPLOAD_ERR_NO_FILE
+) {
 
     if ($_FILES['photo']['error'] !== UPLOAD_ERR_OK) {
         die("Error al cargar la fotografía");
@@ -91,7 +136,9 @@ if (isset($_FILES['photo']) && $_FILES['photo']['error'] !== UPLOAD_ERR_NO_FILE)
     $upload_dir = __DIR__ . '/photos/';
 
     if (!is_dir($upload_dir)) {
-        mkdir($upload_dir, 0755, true);
+        if (!mkdir($upload_dir, 0755, true)) {
+            die("No se pudo crear la carpeta de fotografías");
+        }
     }
 
     $filename = 'user_' . $id . '_' . bin2hex(random_bytes(8))
@@ -122,7 +169,14 @@ $sql_update = "
 $update = pg_query_params(
     $supa_conn,
     $sql_update,
-    [$firstname, $lastname, $email, $mobile_phone, $photo_url, $id]
+    [
+        $firstname,
+        $lastname,
+        $email,
+        $mobile_phone,
+        $photo_url,
+        $id
+    ]
 );
 
 if (!$update) {
